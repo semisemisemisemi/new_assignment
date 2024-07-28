@@ -18,8 +18,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 async function analyzeCode() {
+  // 문제 파일과 학생이 작성한 코드 파일 읽기
   const problemStatement = fs.readFileSync('problem.txt', 'utf8');
-  const studentCode = fs.readFileSync('student_code.cpp', 'utf8');
+  const studentCode = fs.readFileSync('student_code.cpp', 'utf8');  
+  
   const prompt = `
   다음은 학생에게 주어진 문제와 학생이 작성한 코드입니다. 코드를 리뷰하고 잘못된 부분을 지적하며, 어떻게 고치면 좋을지와 그 이유를 설명해 주세요. 또한, 코드의 개선점을 제안해 주세요.
 
