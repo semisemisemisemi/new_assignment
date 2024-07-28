@@ -19,12 +19,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y nodejs npm
-        npm install
-        npm install dotenv
+    - name: Install Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dotenv
+      run: npm install dotenv
 
     - name: Check environment variable
       run: echo $OPENAI_API_KEY
